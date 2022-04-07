@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibNu
 {
-    public class Class1
+    internal class ItemPedido
     {
     }
 }
