@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace ClassLibNu
 {
-    internal class ItemPedido
+    public  class ItemPedido
     {
+        // atributos
+        private Produto produto;
+        private double valor;
+        private double quantidade;
+        private double desconto;
+
+        // propiedades
+        public Produto Produto { get { return produto; } set { produto = value; } }
+        public double Valor { get { return valor; } set { valor = value; } }
+
+
+       
     }
 }
