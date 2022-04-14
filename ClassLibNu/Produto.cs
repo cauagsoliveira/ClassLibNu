@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace ClassLibNu
 {
@@ -45,8 +46,23 @@ namespace ClassLibNu
 
         // metodos de classe
 
-        public void Inserir(Produto produto)//contrutor vasio
+        public void Inserir()
         {
+
+
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_usuario_inserir";
+            cmd.Parameters.AddWithValue("_id", Id);
+            cmd.Parameters.AddWithValue("_descrição", Descricao);
+            cmd.Parameters.AddWithValue("_unidade", Unidade);
+            cmd.Parameters.AddWithValue("codbar",CodBar);
+            cmd.Parameters.AddWithValue("valor", Valor);
+            cmd.CommandText = " selecione @@identity ";
+
+            cmd.Connection.Close();
+
 
         }
         public bool Alterar(Produto produto)
@@ -63,10 +79,28 @@ namespace ClassLibNu
         {
 
             List<Produto> produto = new List<Produto>();
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from clientes order by nome";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+
+               Produto.Add(new Produto(
+                    dr.GetInt32(0),
+                    dr.GetString(1),
+                    dr.GetString(2),
+                    dr.GetString(3),
+                    dr.GetDateTime(4),
+                    dr.GetBoolean(5)
+                    ));
+
+            }
+
             return produto;
 
         }
 
-
+       
     }
 }

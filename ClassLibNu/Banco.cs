@@ -9,13 +9,15 @@ namespace ClassLibNu
 {
      public static class Banco
      {
-        public static MySqlCommand Abrir()
+       public static string Strconexao { get; set; }
+        
+        public static MySqlCommand  Abrir()
         {
             MySqlCommand cmd = new MySqlCommand();
             string strcon = @"";
-            MySqlCommand cn = new MySqlCommand();
+            MySqlConnection cn = new MySqlCommand(strcon);
             cn.Opem();
-            cnd.Connection
+            cnd.Connectio
 
         }
      }
