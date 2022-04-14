@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClassLibNu
 {
+    
     public class Pedido
     {
+        
     }
 }
